@@ -1,0 +1,32 @@
+C:\Users\gonca\Desktop\Jogo das damas\obj\Debug\Jogo das damas.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\Jogo das damas\obj\Debug\Jogo_das_damas.Properties.Resources.resources
+C:\Users\gonca\Desktop\Jogo das damas\obj\Debug\Jogo das damas.csproj.GenerateResource.cache
+C:\Users\gonca\Desktop\Jogo das damas\obj\Debug\Jogo das damas.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\bin\Debug\Jogo das damas.exe.config
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\bin\Debug\Jogo das damas.exe
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\bin\Debug\Jogo das damas.pdb
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.csprojAssemblyReference.cache
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.Properties.Resources.resources
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.csproj.GenerateResource.cache
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.csproj.CoreCompileInputs.cache
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.exe
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.pdb
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\bin\Debug\Jogo das damas.exe.config
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\bin\Debug\Jogo das damas.exe
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\bin\Debug\Jogo das damas.pdb
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.csprojAssemblyReference.cache
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.Properties.Resources.resources
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.csproj.GenerateResource.cache
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.csproj.CoreCompileInputs.cache
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.exe
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo das damas.pdb
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewJogo.resources
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewRegisto.resources
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewLogin.resources
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewRegras.resources
+C:\Users\Carlos\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewMenu.resources
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewJogo.resources
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewMenu.resources
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewRegisto.resources
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewLogin.resources
+C:\Users\gonca\Desktop\Projeto de Lab 3\Jogo das damas\obj\Debug\Jogo_das_damas.ViewRegras.resources
