@@ -5,6 +5,7 @@ namespace Jogo_das_damas
 {
     partial class ViewJogo
     {
+        //Funciona
         /// <summary>
         /// Required designer variable.
         /// </summary>
