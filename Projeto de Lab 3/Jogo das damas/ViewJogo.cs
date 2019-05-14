@@ -19,14 +19,24 @@ namespace Jogo_das_damas
         public event MetodoComUmObject Selecionar;
         public event MetodoComDoisInteiros IniciarVer; //iniciar verificaçao
         public event MetodoEnviaPeca EnviarPeca;
+        public event MetodoSemParametros Iniciar;
+
 
         public ViewJogo()
         {
             InitializeComponent();
             //jogo1.CarregarPecas();
             
+            Program.M_Jogo.RespostaIniciar += M_Jogo_RespostaIniciar;
+            
         }
-        
+
+        private void M_Jogo_RespostaIniciar(Tabuleiro Tabu, Jogador J1, Jogador J2)
+        {
+            J1.List_Pecas = Brancas;
+            J2.List_Pecas = Pretas;
+        }
+
         public List<PictureBox> Brancas = new List<PictureBox>();
         public List<PictureBox> Pretas = new List<PictureBox>();
         
@@ -105,34 +115,10 @@ namespace Jogo_das_damas
         }
         //private bool movimentoExtra() funcao para comer mais que uma peca
         */
+        
 
-      
-        private bool Ver_Movimento(PictureBox Origem,PictureBox Destino, string cor)
-        {
-            Point pontoOrigem = Origem.Location;
-            Point pontoDestino = Destino.Location;
-            int avance = pontoOrigem.Y - pontoDestino.Y;
-            avance = cor == "Branca" ? avance :(avance*-1);
-            
-            if(avance == 50)
-            {
-                return true;
-            }
-            else if(avance==100){
-                Point PontoMedio = new Point(Passo_inter(pontoDestino.X, pontoOrigem.X), Passo_inter(pontoDestino.Y, pontoOrigem.Y));
-                List<PictureBox> PecasOponente = cor == "Branca" ? Pretas : Brancas;
-                for(int i=0; i < PecasOponente.Count; i++)
-                {
-                    if (PecasOponente[i].Location == PontoMedio)
-                    {
-                        PecasOponente[i].Location = new Point(0, 0);
-                        PecasOponente[i].Visible = false;
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+        
+                    
 
 
 
@@ -146,22 +132,19 @@ namespace Jogo_das_damas
 
 
 
-
-
-        private void Form1_Load(object sender, EventArgs e)
+    private void Form1_Load(object sender, EventArgs e)
         {
             CarregarPecas();
-            if (EnviarPeca != null)  
-                EnviarPeca(Brancas);
-            if (EnviarPeca != null)
-                EnviarPeca(Pretas);
+            Iniciar();
+            
         }
 
         private void ClickCasa(object sender, MouseEventArgs e)
         {
             if (MoverPeca != null)
                 MoverPeca((PictureBox)sender);
-
+           
+            
 
         }
         private void ClickBranca(object sender, MouseEventArgs e)
@@ -184,5 +167,9 @@ namespace Jogo_das_damas
             Program.V_Menu.Show();
             this.Hide();
         }
+
+        
+
+       
     }
 }

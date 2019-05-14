@@ -21,7 +21,13 @@ namespace Jogo_das_damas
 
             Program.V_Jogo.MoverPeca += V_Jogo_MoverPeca;
             Program.V_Jogo.Selecionar += V_Jogo_Selecionar;
-            Program.V_Jogo.EnviarPeca += V_Jogo_EnviarPeca;                 
+            Program.V_Jogo.EnviarPeca += V_Jogo_EnviarPeca;
+            Program.V_Jogo.Iniciar += V_Jogo_Iniciar;
+        }
+
+        private void V_Jogo_Iniciar()
+        {
+            Program.M_Jogo.Iniciar();
         }
 
         private void V_Jogo_EnviarPeca(List<PictureBox> Pecas)

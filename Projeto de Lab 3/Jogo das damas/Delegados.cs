@@ -14,4 +14,5 @@ namespace Jogo_das_damas
     public delegate void MetodoVerficarMovimento(PictureBox Origem, PictureBox Destino, string cor);
     public delegate void MetodoSemParametros();
     public delegate void MetodoEnviaPeca(List<PictureBox> Pecas);
+    public delegate void MetodoIniciarTabuleiro(Tabuleiro Tabu,Jogador J1,Jogador J2);
 }
