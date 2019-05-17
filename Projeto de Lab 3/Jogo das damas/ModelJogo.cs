@@ -11,13 +11,17 @@ namespace Jogo_das_damas
 {
     class ModelJogo
     {
-        public event MetodoIniciarTabuleiro RespostaIniciar;
         Tabuleiro tab;
+        Point comida;
+        public event MetodoIniciarTabuleiro RespostaIniciar;
+        public event MetodoRespostaMoverPeca RespostaMoverPeca;
+        public event MetodoRespostaMoverPecaSemComida RespostaMoverPecaSemComida;
         public ModelJogo()
         {
-            
+            tab = new Tabuleiro();
+            comida = new Point(); 
         }
-        public PictureBox selecionado;
+        
         public Jogador Jogador1;
         public Jogador Jogador2;
 
@@ -31,42 +35,19 @@ namespace Jogo_das_damas
             RespostaIniciar(tab,Jogador1,Jogador2);
         }
 
-        public void SelecionarPeca(object objeto)
+       public void MoverPeca(Point atual,Point proximo,char cor)
         {
-            try { selecionado.BackColor = Color.Black; }
-            catch { }
-            PictureBox ficha = (PictureBox)objeto;
-            selecionado = ficha;
-            selecionado.BackColor = Color.Lime;
-        }
-
-
-        public void Mover_Peca(PictureBox casa)//casa picturebox nova localizaçao
-        {
-            bool movExtra;
-
-            if (selecionado != null)
-            {
-                string color = selecionado.Name.ToString().Substring(0, 4);
-                if (Ver_Movimento(selecionado,casa,color))
-                //if (true)
-                {
-                    Point anterior = selecionado.Location;
-                    selecionado.Location = casa.Location;
-                    //int avance = anterior.Y - casa.Location.Y;
-                }
-                if (true)//turnos extras no caso de poder comer outra peça de seguida
-                {
-                    selecionado.BackColor = Color.Black;
-                    selecionado = null;
-                    movExtra = false;
-                }
-                else
-                {
-                    movExtra = true;
-                }
+            
+            tab.VerificarJogada(atual, proximo, cor);
+           
+            if (proximo.Y-atual.Y==2 || proximo.Y - atual.Y == -2) { 
+                comida =new Point((atual.X + proximo.X) / 2, (atual.Y + proximo.Y) / 2);
+                RespostaMoverPeca(atual, proximo, cor, comida);
             }
+            RespostaMoverPecaSemComida(proximo);
         }
+
+
 
         public int Passo_inter(int n1, int n2)
         {
@@ -113,4 +94,33 @@ namespace Jogo_das_damas
 
     }
 }
-    
+/*
+    public void MoverPeca(PictureBox casa)
+    {
+        bool movExtra;
+
+        if (selecionado != null)
+        {
+            string color = selecionado.Name.ToString().Substring(0, 4);
+            if (Ver_Movimento(selecionado,casa,color))
+
+            {
+                Point anterior = selecionado.Location;
+                selecionado.Location = casa.Location;
+                int avance = anterior.Y - casa.Location.Y;
+            }
+            if (true)//turnos extras no caso de poder comer outra peça de seguida
+            {
+                selecionado.BackColor = Color.Black;
+                selecionado = null;
+                movExtra = false;
+            }
+            else
+            {
+                movExtra = true;
+            }
+        }
+    }
+    //private bool movimentoExtra() funcao para comer mais que uma peca
+
+    */

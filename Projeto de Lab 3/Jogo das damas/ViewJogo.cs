@@ -15,19 +15,63 @@ namespace Jogo_das_damas
     public partial class ViewJogo : Form
     {
         //internal static event MetodoComUmObjecEventHandler MetodoComUmObjec = delegate { };
-        public event MetodoComUmPictureBox MoverPeca;
-        public event MetodoComUmObject Selecionar;
-        public event MetodoComDoisInteiros IniciarVer; //iniciar verificaçao
+       // public event MetodoComUmPictureBox MoverPeca;
+        //public event MetodoComUmObject Selecionar;
+        public event MetodoComDoisPoints PedidoMoverPeca; //iniciar verificaçao
         public event MetodoEnviaPeca EnviarPeca;
         public event MetodoSemParametros Iniciar;
 
-
+        public PictureBox selecionado;
         public ViewJogo()
         {
             InitializeComponent();
             //jogo1.CarregarPecas();
-            
+            selecionado = new PictureBox();
             Program.M_Jogo.RespostaIniciar += M_Jogo_RespostaIniciar;
+            Program.M_Jogo.RespostaMoverPeca += M_Jogo_RespostaMoverPeca;
+            Program.M_Jogo.RespostaMoverPecaSemComida += M_Jogo_RespostaMoverPecaSemComida;
+        }
+
+        private void M_Jogo_RespostaMoverPecaSemComida(Point proximo)
+        {
+            proximo.X = 50 * proximo.X + 85;
+            proximo.Y = 50 * proximo.Y + 30;
+            selecionado.Location = new Point(proximo.X, proximo.Y);
+        }
+
+        private void M_Jogo_RespostaMoverPeca(Point atual, Point proximo, char cor, Point comida)
+        {
+            proximo.X = 50 * proximo.X + 85;
+            proximo.Y = 50 * proximo.Y + 30;
+            selecionado.Location = new Point(proximo.X,proximo.Y);
+            comida.X = 50 * comida.X + 85;
+            comida.Y = 50 * comida.Y + 30;
+            //remover picturebox da lista 
+            
+            int i = 1;
+            if (cor != 'B') {
+                do
+                {
+                i++;
+                    if((Brancas[i].Location != new Point(comida.X, comida.Y)))
+                    { 
+                        Brancas[i].Hide();
+                    }
+                } while ( (i <10)) ;
+                    
+            }
+            else
+            {
+                do
+                {
+                    i++;
+                    if ((Pretas[i].Location != new Point(comida.X, comida.Y)))
+                    {
+                        Pretas[i].Hide();
+                    }
+                } while ((i < 10));
+
+            }
             
         }
 
@@ -39,7 +83,10 @@ namespace Jogo_das_damas
 
         public List<PictureBox> Brancas = new List<PictureBox>();
         public List<PictureBox> Pretas = new List<PictureBox>();
-        
+        public Point f1 ;
+        public Point f2 ;
+
+
         public void CarregarPecas()
         {
             //Brancas
@@ -73,19 +120,20 @@ namespace Jogo_das_damas
 
 
 
-        /*
-           PictureBox selecionado = null;
-
+        
+           
+        
         public void Selecionar(object objeto)
         {
-            try { selecionado.BackColor = Color.Black; }
+            try {
+                selecionado.BackColor = Color.Black; }
             catch { }
             PictureBox ficha = (PictureBox)objeto;
             selecionado = ficha;
             selecionado.BackColor = Color.Lime;
 
         }
-        */
+        
         /*
         public void MoverPeca(PictureBox casa)
         {
@@ -94,8 +142,8 @@ namespace Jogo_das_damas
             if (selecionado != null)
             {
                 string color = selecionado.Name.ToString().Substring(0, 4);
-                //if (Ver_Movimento(selecionado,casa,color))
-                if(true)
+                if (Ver_Movimento(selecionado,casa,color))
+                
                 {
                     Point anterior = selecionado.Location;
                     selecionado.Location = casa.Location;
@@ -114,8 +162,8 @@ namespace Jogo_das_damas
             }
         }
         //private bool movimentoExtra() funcao para comer mais que uma peca
-        */
         
+        */
 
         
                     
@@ -141,24 +189,30 @@ namespace Jogo_das_damas
 
         private void ClickCasa(object sender, MouseEventArgs e)
         {
-            if (MoverPeca != null)
-                MoverPeca((PictureBox)sender);
+            f1 = selecionado.Location;
+            f2 = ((PictureBox)sender).Location;
+
+            f1.X = ((f1.X - 85) / 50);
+            f1.Y = ((f1.Y - 30) / 50);
+
+            f2.X = ((f2.X - 85) / 50);
+            f2.Y = ((f2.Y - 30) / 50);
+
+            string cor2 = selecionado.Name.ToString().Substring(0, 1);
+            char cor = Convert.ToChar(cor2);
+
+            PedidoMoverPeca(f1,f2,cor);
            
             
 
         }
         private void ClickBranca(object sender, MouseEventArgs e)
         {
-            //Selecionar(sender);
-
-           if (Selecionar != null)
                 Selecionar((PictureBox)sender);
         }
       
         private void ClickPreta(object sender, MouseEventArgs e)
         {
-            
-            if(Selecionar != null)
                 Selecionar((PictureBox)sender);
         }
 

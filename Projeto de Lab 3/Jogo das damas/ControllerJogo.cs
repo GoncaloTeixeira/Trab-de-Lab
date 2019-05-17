@@ -18,11 +18,15 @@ namespace Jogo_das_damas
 
         public ControllerJogo()
         {
-
-            Program.V_Jogo.MoverPeca += V_Jogo_MoverPeca;
-            Program.V_Jogo.Selecionar += V_Jogo_Selecionar;
+            Program.V_Jogo.PedidoMoverPeca += V_Jogo_PedidoMoverPeca;
+            
             Program.V_Jogo.EnviarPeca += V_Jogo_EnviarPeca;
             Program.V_Jogo.Iniciar += V_Jogo_Iniciar;
+        }
+
+        private void V_Jogo_PedidoMoverPeca(Point atual, Point proximo,char cor)
+        {
+            Program.M_Jogo.MoverPeca(atual, proximo,cor);
         }
 
         private void V_Jogo_Iniciar()
@@ -35,16 +39,7 @@ namespace Jogo_das_damas
             
         }
 
-        private void V_Jogo_Selecionar(object objeto)
-        {
+       
 
-            Program.M_Jogo.SelecionarPeca(objeto);
-
-        }
-
-        private void V_Jogo_MoverPeca(PictureBox casa)
-        {
-            Program.M_Jogo.Mover_Peca(casa);
-        }
     }
 }

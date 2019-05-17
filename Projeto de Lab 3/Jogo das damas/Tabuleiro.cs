@@ -14,10 +14,10 @@ namespace Jogo_das_damas
 
         public Tabuleiro()
         {
-            Mat_Tabuleiro = new char[7, 7];
-            for(int i = 0; i< 8; i++)
+            Mat_Tabuleiro = new char[8, 8];
+            for(int i =0; i< 8; i++)
             {
-                for (int j = 0; i < 8; j++)
+                for (int j = 0; j < 8; j++)
                 {
                     
                     if (i % 2 == 0)
@@ -27,7 +27,7 @@ namespace Jogo_das_damas
                             if (i <= 2)
                             {
                                 Mat_Tabuleiro[i, j] = 'P';//Pretas
-                            }else if (i > 5)
+                            }else if (i >=5)
                             {
                                 Mat_Tabuleiro[i, j] = 'B';//Brancas
                             }
@@ -36,13 +36,14 @@ namespace Jogo_das_damas
                                 Mat_Tabuleiro[i, j] = 'V';//Vacuo Vazias
                             }                          
                         }
-                    }else if ( j % 2 ==1)
+                    }
+                    if ( j % 2 ==1 && i%2==1)
                     {
                         if (i <= 2)
                         {
                             Mat_Tabuleiro[i, j] = 'P';//Pretas
                         }
-                        else if (i > 5)
+                        else if (i >= 5)
                         {
                             Mat_Tabuleiro[i, j] = 'B';//Brancas
                         }
@@ -58,7 +59,51 @@ namespace Jogo_das_damas
             }
 
         }
+        public void VerificarJogada(Point atual,Point proximo,char cor)
+        {
+            int avanceY = proximo.Y - atual.Y;
+            int avanceX = proximo.X - atual.X;
+            avanceX = Math.Abs(avanceX);
+            avanceY = Math.Abs(avanceY);
 
+
+            if (cor == 'B')
+            {
+                avanceY = avanceY * -1;
+            }
+            if (avanceY == 1 && avanceX == 1)
+            {
+                if (Mat_Tabuleiro[proximo.X, proximo.Y] == 'V')
+                {
+                    Mat_Tabuleiro[atual.X, atual.Y] = 'V';
+                    Mat_Tabuleiro[proximo.X, proximo.Y] = cor;
+
+                }
+            }
+            if (avanceY == 2 && avanceX == 2)
+            {
+                if (Mat_Tabuleiro[proximo.X, proximo.Y] == 'V')
+                {
+                    if (Mat_Tabuleiro[(atual.X + proximo.X) / 2, (atual.Y + proximo.Y) / 2] != 'V' && Mat_Tabuleiro[(atual.X + proximo.X) / 2, (atual.Y + proximo.Y) / 2] != cor)
+                    {
+                        Mat_Tabuleiro[atual.X, atual.Y] = 'V';
+                        Mat_Tabuleiro[(atual.X + proximo.X) / 2, (atual.Y + proximo.Y) / 2] = 'V';//peca comida
+                        //remover das pecas do jogador
+                        Mat_Tabuleiro[proximo.X, proximo.Y] = cor;
+                    }
+                }
+            }
+
+
+
+
+
+            else if (Mat_Tabuleiro[proximo.X, proximo.Y] == 'B' || (Mat_Tabuleiro[proximo.X, proximo.Y] == 'P'))
+            {
+                return ;
+            }
+            
+        }
 
 
 
