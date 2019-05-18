@@ -48,7 +48,7 @@ namespace Jogo_das_damas
             comida.Y = 50 * comida.Y + 30;
             //remover picturebox da lista 
             
-            int i = 1;
+            int i = -1;
             if (cor != 'B') {
                 do
                 {
