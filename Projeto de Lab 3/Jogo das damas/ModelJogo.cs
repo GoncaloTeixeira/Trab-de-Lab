@@ -37,14 +37,28 @@ namespace Jogo_das_damas
 
        public void MoverPeca(Point atual,Point proximo,char cor)
         {
-            
-            tab.VerificarJogada(atual, proximo, cor);
-           
-            if (proximo.Y-atual.Y==2 || proximo.Y - atual.Y == -2) { 
-                comida =new Point((atual.X + proximo.X) / 2, (atual.Y + proximo.Y) / 2);
+            int res = tab.VerificarJogada(atual, proximo, cor);
+            if (res== 0)
+            {
+                RespostaMoverPecaSemComida(proximo);
+            }
+            else if (res == 1)
+            {
+                comida = new Point((atual.X + proximo.X) / 2, (atual.Y + proximo.Y) / 2);
                 RespostaMoverPeca(atual, proximo, cor, comida);
             }
-            RespostaMoverPecaSemComida(proximo);
+
+
+            //tab.VerificarJogada(atual, proximo, cor);       
+            //if (proximo.Y-atual.Y==2 || proximo.Y - atual.Y == -2) { 
+            //    comida =new Point((atual.X + proximo.X) / 2, (atual.Y + proximo.Y) / 2);
+            //    RespostaMoverPeca(atual, proximo, cor, comida);
+            //}
+            //if((Math.Abs(proximo.X - atual.X)==1) && (Math.Abs((proximo.Y - atual.Y)) == 1)){
+            //    RespostaMoverPecaSemComida(proximo);
+            //}
+
+
         }
 
 

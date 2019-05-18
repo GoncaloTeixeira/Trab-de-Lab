@@ -40,14 +40,14 @@
             // 
             this.tB_Username.Location = new System.Drawing.Point(40, 36);
             this.tB_Username.Name = "tB_Username";
-            this.tB_Username.Size = new System.Drawing.Size(197, 20);
+            this.tB_Username.Size = new System.Drawing.Size(197, 22);
             this.tB_Username.TabIndex = 0;
             // 
             // tB_pass
             // 
             this.tB_pass.Location = new System.Drawing.Point(40, 75);
             this.tB_pass.Name = "tB_pass";
-            this.tB_pass.Size = new System.Drawing.Size(197, 20);
+            this.tB_pass.Size = new System.Drawing.Size(197, 22);
             this.tB_pass.TabIndex = 1;
             // 
             // lbl_username
@@ -55,7 +55,7 @@
             this.lbl_username.AutoSize = true;
             this.lbl_username.Location = new System.Drawing.Point(56, 20);
             this.lbl_username.Name = "lbl_username";
-            this.lbl_username.Size = new System.Drawing.Size(55, 13);
+            this.lbl_username.Size = new System.Drawing.Size(73, 17);
             this.lbl_username.TabIndex = 2;
             this.lbl_username.Text = "Username";
             // 
@@ -64,7 +64,7 @@
             this.lbl_pass.AutoSize = true;
             this.lbl_pass.Location = new System.Drawing.Point(58, 59);
             this.lbl_pass.Name = "lbl_pass";
-            this.lbl_pass.Size = new System.Drawing.Size(53, 13);
+            this.lbl_pass.Size = new System.Drawing.Size(69, 17);
             this.lbl_pass.TabIndex = 3;
             this.lbl_pass.Text = "Password";
             // 
@@ -99,6 +99,7 @@
             this.Controls.Add(this.tB_pass);
             this.Controls.Add(this.tB_Username);
             this.Name = "ViewLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 

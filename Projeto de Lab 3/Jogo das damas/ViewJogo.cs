@@ -46,30 +46,30 @@ namespace Jogo_das_damas
             selecionado.Location = new Point(proximo.X,proximo.Y);
             comida.X = 50 * comida.X + 85;
             comida.Y = 50 * comida.Y + 30;
-            //remover picturebox da lista 
             
-            int i = -1;
+            //remover picturebox da lista 
+
+
             if (cor != 'B') {
-                do
+                foreach (PictureBox peca in Brancas)
                 {
-                i++;
-                    if((Brancas[i].Location != new Point(comida.X, comida.Y)))
-                    { 
-                        Brancas[i].Hide();
+                    if (peca.Location == new Point(comida.X, comida.Y))
+                    {
+                        peca.Hide();
                     }
-                } while ( (i <10)) ;
-                    
+                }
+
             }
             else
             {
-                do
+               
+            foreach(PictureBox peca in Pretas)
                 {
-                    i++;
-                    if ((Pretas[i].Location != new Point(comida.X, comida.Y)))
+                    if (peca.Location== new Point(comida.X, comida.Y))
                     {
-                        Pretas[i].Hide();
+                        peca.Hide();
                     }
-                } while ((i < 10));
+                }
 
             }
             
