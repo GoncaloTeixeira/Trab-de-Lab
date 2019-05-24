@@ -16,6 +16,7 @@ namespace Jogo_das_damas
         public event MetodoIniciarTabuleiro RespostaIniciar;
         public event MetodoRespostaMoverPeca RespostaMoverPeca;
         public event MetodoRespostaMoverPecaSemComida RespostaMoverPecaSemComida;
+
         public ModelJogo()
         {
             tab = new Tabuleiro();
@@ -35,12 +36,15 @@ namespace Jogo_das_damas
             RespostaIniciar(tab,Jogador1,Jogador2);
         }
 
+     
+
        public void MoverPeca(Point atual,Point proximo,char cor)
         {
             int res = tab.VerificarJogada(atual, proximo, cor);
             if (res== 0)
             {
                 RespostaMoverPecaSemComida(proximo);
+               
             }
             else if (res == 1)
             {
@@ -103,7 +107,7 @@ namespace Jogo_das_damas
 
         public void IniciarCarregarPecas()
         {
-
+            
         }
 
     }

@@ -22,6 +22,12 @@ namespace Jogo_das_damas
             
             Program.V_Jogo.EnviarPeca += V_Jogo_EnviarPeca;
             Program.V_Jogo.Iniciar += V_Jogo_Iniciar;
+            Program.V_Jogo.PedidoMoverDama += V_Jogo_PedidoMoverDama;
+        }
+
+        private void V_Jogo_PedidoMoverDama(Point atual, Point proximo, char cor)
+        {
+            throw new NotImplementedException();
         }
 
         private void V_Jogo_PedidoMoverPeca(Point atual, Point proximo,char cor)

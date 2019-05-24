@@ -20,9 +20,23 @@ namespace Jogo_das_damas
         public bool movExtra {get; set;}
 
     
+        public Jogo()
+        {
+            //if (Modo ==1) 
+            //    JogoX1();
 
+            //if (Modo == BOT)
+            //    JogoBot();
+            //if (Modo == Online)
+            //    JogoOnline();
+        }    
         
-        
+
+        public void JogoX1()
+        {
+
+        }
+
 
     }
 }

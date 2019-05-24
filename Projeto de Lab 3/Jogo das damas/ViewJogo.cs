@@ -20,6 +20,7 @@ namespace Jogo_das_damas
         public event MetodoComDoisPoints PedidoMoverPeca; //iniciar verificaçao
         public event MetodoEnviaPeca EnviarPeca;
         public event MetodoSemParametros Iniciar;
+        public event MetodoComDoisPoints PedidoMoverDama;
 
         public PictureBox selecionado;
         public ViewJogo()
@@ -36,9 +37,12 @@ namespace Jogo_das_damas
         {
             proximo.X = 50 * proximo.X + 85;
             proximo.Y = 50 * proximo.Y + 30;
+           
             selecionado.Location = new Point(proximo.X, proximo.Y);
+
         }
 
+      
         private void M_Jogo_RespostaMoverPeca(Point atual, Point proximo, char cor, Point comida)
         {
             proximo.X = 50 * proximo.X + 85;
@@ -46,9 +50,24 @@ namespace Jogo_das_damas
             selecionado.Location = new Point(proximo.X,proximo.Y);
             comida.X = 50 * comida.X + 85;
             comida.Y = 50 * comida.Y + 30;
-            
+
             //remover picturebox da lista 
 
+            if (proximo.Y == 30)
+            {
+                if (cor == 'P')
+                {
+                    selecionado.BackgroundImage = Properties.Resources.PretaQueen;
+                    selecionado.Tag = "Dama";
+                }
+            }
+            if (proximo.Y == 380)
+                if (cor == 'B')
+                {
+                    selecionado.BackgroundImage = Properties.Resources.BrancaQueen;
+                    selecionado.Tag = "Dama";
+                }
+            { }
 
             if (cor != 'B') {
                 foreach (PictureBox peca in Brancas)
@@ -190,6 +209,7 @@ namespace Jogo_das_damas
         private void ClickCasa(object sender, MouseEventArgs e)
         {
             f1 = selecionado.Location;
+            
             f2 = ((PictureBox)sender).Location;
 
             f1.X = ((f1.X - 85) / 50);
@@ -200,7 +220,10 @@ namespace Jogo_das_damas
 
             string cor2 = selecionado.Name.ToString().Substring(0, 1);
             char cor = Convert.ToChar(cor2);
-
+            if (selecionado.Tag == "Dama")
+            {
+                PedidoMoverDama(f1, f2, cor);
+            }
             PedidoMoverPeca(f1,f2,cor);
            
             
