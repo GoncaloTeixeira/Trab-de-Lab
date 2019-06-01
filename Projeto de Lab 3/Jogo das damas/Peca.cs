@@ -15,16 +15,19 @@ namespace Jogo_das_damas
         
         public bool Dama { get; set; }    
         public char Cor { get; set; }
-       
+        public Point Loc{ get; set; }
+        
         public Peca()
         {
             Cor = ' ';
             Dama = false;
         }
-        public Peca(char cor2)
+        public Peca(char cor2,Point Loc2)
         {
             Cor = cor2;
+            Loc = Loc2;
         }
+        
 
 
        

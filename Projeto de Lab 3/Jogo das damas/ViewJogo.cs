@@ -28,18 +28,36 @@ namespace Jogo_das_damas
             InitializeComponent();
             //jogo1.CarregarPecas();
             selecionado = new PictureBox();
-            Program.M_Jogo.RespostaIniciar += M_Jogo_RespostaIniciar;
+            //Program.M_Jogo.RespostaIniciar += M_Jogo_RespostaIniciar;
             Program.M_Jogo.RespostaMoverPeca += M_Jogo_RespostaMoverPeca;
             Program.M_Jogo.RespostaMoverPecaSemComida += M_Jogo_RespostaMoverPecaSemComida;
         }
-
-        private void M_Jogo_RespostaMoverPecaSemComida(Point proximo)
+        public void IfQueen(Point proximo, char cor)
+        {
+            if (proximo.Y == 30)
+            {
+                if (cor == 'P')
+                {
+                    selecionado.BackgroundImage = Properties.Resources.PretaQueen;
+                    selecionado.Tag = "Dama";
+                }
+            }
+            if (proximo.Y == 380)
+            {
+                if (cor == 'B')
+                {
+                    selecionado.BackgroundImage = Properties.Resources.BrancaQueen;
+                    selecionado.Tag = "Dama";
+                }
+            }
+        }
+        private void M_Jogo_RespostaMoverPecaSemComida(Point proximo,char cor)
         {
             proximo.X = 50 * proximo.X + 85;
             proximo.Y = 50 * proximo.Y + 30;
            
             selecionado.Location = new Point(proximo.X, proximo.Y);
-
+            IfQueen(proximo, cor);
         }
 
       
@@ -53,21 +71,7 @@ namespace Jogo_das_damas
 
             //remover picturebox da lista 
 
-            if (proximo.Y == 30)
-            {
-                if (cor == 'P')
-                {
-                    selecionado.BackgroundImage = Properties.Resources.PretaQueen;
-                    selecionado.Tag = "Dama";
-                }
-            }
-            if (proximo.Y == 380)
-                if (cor == 'B')
-                {
-                    selecionado.BackgroundImage = Properties.Resources.BrancaQueen;
-                    selecionado.Tag = "Dama";
-                }
-            { }
+            
 
             if (cor != 'B') {
                 foreach (PictureBox peca in Brancas)
@@ -91,14 +95,17 @@ namespace Jogo_das_damas
                 }
 
             }
-            
+            IfQueen(proximo, cor);
+
+
+
         }
 
-        private void M_Jogo_RespostaIniciar(Tabuleiro Tabu, Jogador J1, Jogador J2)
-        {
-            J1.List_Pecas = Brancas;
-            J2.List_Pecas = Pretas;
-        }
+        //private void M_Jogo_RespostaIniciar(Tabuleiro Tabu, Jogador J1, Jogador J2)
+        //{
+        //    J1.List_Pecas = Brancas;
+        //    J2.List_Pecas = Pretas;
+        //}
 
         public List<PictureBox> Brancas = new List<PictureBox>();
         public List<PictureBox> Pretas = new List<PictureBox>();
@@ -203,6 +210,7 @@ namespace Jogo_das_damas
         {
             CarregarPecas();
             Iniciar();
+
             
         }
 

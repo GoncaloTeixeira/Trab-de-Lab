@@ -12,32 +12,38 @@ namespace Jogo_das_damas
     {
         public Peca[,] Mat_Tabuleiro { get; set; }
         public Peca[,] CopiaMatriz { get; set; }
-        public Peca piece { get; set; }
+        public Peca Piece { get; set; }
 
         public Tabuleiro()
         {
             CopiaMatriz = new Peca[8, 8];
             Mat_Tabuleiro = new Peca[8, 8];
-            for(int i =0; i< 8; i++)
+            Piece = new Peca();
+            for (int i =0; i< 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
                     
-                    if (j % 2 == 0)
+                    if (i % 2 == 0)
                     {
                         if (j % 2 == 0)
                         {
                             if (j <= 2)
                             {
-                               
-                                Mat_Tabuleiro[i, j].Cor = 'B';//Brancas
+                                Piece = new Peca();
+                                Piece.Cor = 'B';
+                                Mat_Tabuleiro[i, j] = Piece;//Brancas
                             }else if (j >=5)
                             {
-                                Mat_Tabuleiro[i, j].Cor = 'P';//Pretas
+                                Piece = new Peca();
+                                Piece.Cor = 'P';
+                                Mat_Tabuleiro[i, j] = Piece;//Pretas
                             }
                             else
                             {
-                                Mat_Tabuleiro[i, j].Cor = 'V';//Vacuo Vazias
+                                Piece = new Peca();
+                                Piece.Cor = 'V';
+                                Mat_Tabuleiro[i, j] = Piece;//Vacuo Vazias
                             }                          
                         }
                     }
@@ -45,15 +51,21 @@ namespace Jogo_das_damas
                     {
                         if (j <= 2)
                         {
-                            Mat_Tabuleiro[i, j].Cor = 'B';//Brancas
+                            Piece = new Peca();
+                            Piece.Cor = 'B';
+                            Mat_Tabuleiro[i, j] = Piece;//Brancas
                         }
                         else if (j >= 5)
                         {
-                            Mat_Tabuleiro[i, j].Cor = 'P';//Pretas
+                            Piece = new Peca();
+                            Piece.Cor = 'P';
+                            Mat_Tabuleiro[i, j]= Piece;//Pretas
                         }
                         else
                         {
-                            Mat_Tabuleiro[i, j].Cor = 'V';//Vacuo Vazias
+                            Piece = new Peca();
+                            Piece.Cor = 'V';
+                            Mat_Tabuleiro[i, j] =Piece;//Vacuo Vazias
                         }
                     }
 

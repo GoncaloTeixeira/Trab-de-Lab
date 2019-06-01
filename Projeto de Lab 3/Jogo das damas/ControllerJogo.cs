@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Jogo_das_damas
 {
-    class ControllerJogo : ViewJogo
+    class ControllerJogo 
     {
 
 
@@ -27,7 +27,7 @@ namespace Jogo_das_damas
 
         private void V_Jogo_PedidoMoverDama(Point atual, Point proximo, char cor)
         {
-            throw new NotImplementedException();
+            Program.M_Jogo.MoverDama(atual, proximo, cor);
         }
 
         private void V_Jogo_PedidoMoverPeca(Point atual, Point proximo,char cor)

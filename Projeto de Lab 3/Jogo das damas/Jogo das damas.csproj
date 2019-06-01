@@ -50,9 +50,7 @@
     <Compile Include="Casa_Invalida.cs" />
     <Compile Include="Casa_Livre.cs" />
     <Compile Include="Casa_Ocupada.cs" />
-    <Compile Include="ControllerJogo.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ControllerJogo.cs" />
     <Compile Include="Delegados.cs" />
     <Compile Include="ModelJogo.cs" />
     <Compile Include="ViewJogo.cs">

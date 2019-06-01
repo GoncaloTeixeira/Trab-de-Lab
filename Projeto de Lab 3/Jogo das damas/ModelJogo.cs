@@ -19,36 +19,124 @@ namespace Jogo_das_damas
 
         public ModelJogo()
         {
-            tab = new Tabuleiro();
+            //tab = new Tabuleiro();
             comida = new Point(); 
         }
         
         public Jogador Jogador1;
         public Jogador Jogador2;
-
-
+        public Peca piece1;
+        public Point Ponto;
 
         public void Iniciar()
         {
+            tab = new Tabuleiro();
             Jogador1 = new Jogador();
             Jogador2 = new Jogador();
+            Jogador1.Vez = true;
+            Jogador1.Cor = 'B';
+            Jogador2.Vez = false;
+            Jogador2.Cor = 'P';
             //Enviar matriz 
-            RespostaIniciar(tab,Jogador1,Jogador2);
+            CarregarPecasParaCadaJogador();
+            //RespostaIniciar(tab,Jogador1,Jogador2);
         }
 
-     
-
-       public void MoverPeca(Point atual,Point proximo,char cor)
+        public void CarregarPecasParaCadaJogador()
         {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    try { 
+                    if (tab.Mat_Tabuleiro[i, j].Cor == 'B')
+                    {
+                        Ponto = new Point(i,j);
+                        piece1 = new Peca('B',Ponto);
+                        Jogador1.List_Pecas.Add(piece1);
+                    }
+                    if (tab.Mat_Tabuleiro[i, j].Cor == 'P')
+                    {
+                        Ponto = new Point(i, j);
+                        piece1 = new Peca('P', Ponto);
+                        Jogador2.List_Pecas.Add(piece1);
+                    }
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+
+
+
+        }
+
+        public void MoverDama(Point atual, Point proximo, char cor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TrocarVez()
+        {
+            if (Jogador1.Vez == true)
+            {
+                Jogador2.Vez = true;
+                Jogador1.Vez = false;
+            }
+            else
+            {
+                Jogador1.Vez = true;
+                Jogador2.Vez = false;
+            }
+        }
+
+
+        public void MoverPeca(Point atual,Point proximo,char cor)
+        {
+            if (Jogador1.Vez==true && Jogador1.Cor != cor)
+            {
+                return;
+            }
+            if (Jogador2.Vez == true && Jogador2.Cor != cor)
+            {
+                return;
+            }
             int res = tab.VerificarJogada(atual, proximo, cor);
             if (res== 0)
             {
-                RespostaMoverPecaSemComida(proximo);
-               
+                RespostaMoverPecaSemComida(proximo,cor);
+                TrocarVez();
+                
             }
             else if (res == 1)
             {
                 comida = new Point((atual.X + proximo.X) / 2, (atual.Y + proximo.Y) / 2);
+                if (Jogador1.Vez==false)
+                {
+                    Jogador2.List_Pecas_Com.Add(new Peca (cor, comida));
+                    foreach (Peca peca in Jogador1.List_Pecas)
+                    {
+                        if (peca.Loc == comida)
+                        {
+                            Jogador1.List_Pecas.Remove(peca);
+                        }
+                    }
+
+                }
+                else
+                {
+                    Jogador1.List_Pecas_Com.Add(new Peca(cor, comida));
+                    foreach (Peca peca in Jogador2.List_Pecas)
+                    {
+                        if (peca.Loc == comida)
+                        {
+                            Jogador2.List_Pecas.Remove(peca);
+                        }
+                    }
+                }
+                TrocarVez();
                 RespostaMoverPeca(atual, proximo, cor, comida);
             }
 
@@ -75,7 +163,7 @@ namespace Jogo_das_damas
 
 
         }
-
+        /*
         private bool Ver_Movimento(PictureBox Origem, PictureBox Destino, string cor)
         {
             Point pontoOrigem = Origem.Location;
@@ -93,9 +181,9 @@ namespace Jogo_das_damas
                 Jogador2.List_Pecas = cor == "Branca" ? Jogador2.List_Pecas : Jogador1.List_Pecas;//pecas do oponente;
                 for (int i = 0; i < Jogador2.List_Pecas.Count; i++)
                 {
-                    if (Jogador2.List_Pecas[i].Location == PontoMedio)
+                    if (Jogador2.List_Pecas[i].Loc == PontoMedio)
                     {
-                        Jogador2.List_Pecas[i].Location = new Point(0, 0);
+                        Jogador2.List_Pecas[i].Loc = new Point(0, 0);
                         Jogador2.List_Pecas[i].Visible = false;
                         return true;
                     }
@@ -103,7 +191,7 @@ namespace Jogo_das_damas
             }
             return false;
         }
-
+        */
 
         public void IniciarCarregarPecas()
         {
