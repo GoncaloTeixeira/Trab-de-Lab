@@ -1011,6 +1011,7 @@ namespace Jogo_das_damas
             this.Branca8.Size = new System.Drawing.Size(50, 50);
             this.Branca8.TabIndex = 96;
             this.Branca8.TabStop = false;
+            this.Branca8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClickBranca);
             // 
             // Branca5
             // 

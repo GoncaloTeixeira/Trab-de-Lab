@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Jogo_das_damas
 {
-    class ControllerJogo 
+    public class ControllerJogo 
     {
 
 
@@ -23,7 +23,13 @@ namespace Jogo_das_damas
             Program.V_Jogo.EnviarPeca += V_Jogo_EnviarPeca;
             Program.V_Jogo.Iniciar += V_Jogo_Iniciar;
             Program.V_Jogo.PedidoMoverDama += V_Jogo_PedidoMoverDama;
+            //Program.V_Jogo.PedidoVerificarcomer += V_Jogo_PedidoVerificarcomer;
         }
+
+        //private void V_Jogo_PedidoVerificarcomer()
+        //{
+        //    //Program.M_Jogo.verificarComer(jo);
+        //}
 
         private void V_Jogo_PedidoMoverDama(Point atual, Point proximo, char cor)
         {

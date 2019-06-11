@@ -18,5 +18,6 @@ namespace Jogo_das_damas
     public delegate void MetodoSemParametros();
     public delegate void MetodoEnviaPeca(List<PictureBox> Pecas);
     public delegate void MetodoIniciarTabuleiro(Tabuleiro Tabu,Jogador J1,Jogador J2);
-
+    public delegate void MetodoEnviaPonto(Point Ponto);
+    public delegate void MetodoComUmaCor(char cor);
 }

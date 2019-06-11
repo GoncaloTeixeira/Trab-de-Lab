@@ -21,17 +21,93 @@ namespace Jogo_das_damas
         public event MetodoEnviaPeca EnviarPeca;
         public event MetodoSemParametros Iniciar;
         public event MetodoComDoisPoints PedidoMoverDama;
+        public event MetodoSemParametros PedidoVerificarcomer;
+        
 
+
+        public List<PictureBox> Brancas = new List<PictureBox>();
+        public List<PictureBox> Pretas = new List<PictureBox>();
+        public Point f1;
+        public Point f2;
         public PictureBox selecionado;
+        public PictureBox selecionado1;
         public ViewJogo()
         {
             InitializeComponent();
             //jogo1.CarregarPecas();
             selecionado = new PictureBox();
+            selecionado1 = new PictureBox();
             //Program.M_Jogo.RespostaIniciar += M_Jogo_RespostaIniciar;
             Program.M_Jogo.RespostaMoverPeca += M_Jogo_RespostaMoverPeca;
             Program.M_Jogo.RespostaMoverPecaSemComida += M_Jogo_RespostaMoverPecaSemComida;
+            Program.M_Jogo.NotificaPecaASerJogada += M_Jogo_NotificaPecaASerJogada;
+            Program.M_Jogo.NotificacaoTrocarVez += M_Jogo_NotificacaoTrocarVez;
+            Program.M_Jogo.Resettabuleiro += M_Jogo_Resettabuleiro;
         }
+
+        private void M_Jogo_Resettabuleiro()
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                Brancas[i].BackColor = Color.Black;
+                Brancas[i].Enabled = false;
+            }
+            for (int i = 0; i < 12; i++)
+            {
+                Pretas[i].BackColor = Color.Black;
+                Pretas[i].Enabled = false;
+            }
+        }
+
+        private void M_Jogo_NotificacaoTrocarVez(char cor)
+        {
+           if (cor == 'B')
+            {
+                for(int i = 0; i < 12; i++)
+                {
+                    Brancas[i].Enabled = true;
+                    Pretas[i].Enabled = false;
+                }
+
+            }
+            else
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    Brancas[i].Enabled = false;
+                    Pretas[i].Enabled = true;
+                }
+            }
+        }
+
+        private void M_Jogo_NotificaPecaASerJogada(Point Ponto)
+        {
+            
+            Ponto.X = 50 * Ponto.X + 85;
+            Ponto.Y = 50 * Ponto.Y + 30;
+
+
+           
+            for (int i=0; i < 12; i++) { 
+                  if (Ponto == Brancas[i].Location) {
+                    
+                    Brancas[i].BackColor = Color.BlueViolet;
+                    Brancas[i].Enabled = true;
+                  }
+            }
+            for (int i = 0; i < 12; i++)
+            {
+                if (Ponto == Pretas[i].Location)
+                {
+
+                    Pretas[i].BackColor = Color.BlueViolet;
+                    Pretas[i].Enabled = true;
+                }
+            }
+
+
+        }
+
         public void IfQueen(Point proximo, char cor)
         {
             if (proximo.Y == 30)
@@ -51,6 +127,7 @@ namespace Jogo_das_damas
                 }
             }
         }
+
         private void M_Jogo_RespostaMoverPecaSemComida(Point proximo,char cor)
         {
             proximo.X = 50 * proximo.X + 85;
@@ -58,6 +135,10 @@ namespace Jogo_das_damas
            
             selecionado.Location = new Point(proximo.X, proximo.Y);
             IfQueen(proximo, cor);
+
+
+            //Program.M_Jogo.verificarComer(Program.M_Jogo.Jogador1);
+            //Program.M_Jogo.verificarComer(Program.M_Jogo.Jogador2);
         }
 
       
@@ -97,7 +178,7 @@ namespace Jogo_das_damas
             }
             IfQueen(proximo, cor);
 
-
+            //Program.M_Jogo.verificarComer(Program.M_Jogo.Jogador1);
 
         }
 
@@ -107,10 +188,7 @@ namespace Jogo_das_damas
         //    J2.List_Pecas = Pretas;
         //}
 
-        public List<PictureBox> Brancas = new List<PictureBox>();
-        public List<PictureBox> Pretas = new List<PictureBox>();
-        public Point f1 ;
-        public Point f2 ;
+       
 
 
         public void CarregarPecas()
@@ -151,6 +229,8 @@ namespace Jogo_das_damas
         
         public void Selecionar(object objeto)
         {
+           
+            
             try {
                 selecionado.BackColor = Color.Black; }
             catch { }
@@ -160,36 +240,7 @@ namespace Jogo_das_damas
 
         }
         
-        /*
-        public void MoverPeca(PictureBox casa)
-        {
-            bool movExtra;
-
-            if (selecionado != null)
-            {
-                string color = selecionado.Name.ToString().Substring(0, 4);
-                if (Ver_Movimento(selecionado,casa,color))
-                
-                {
-                    Point anterior = selecionado.Location;
-                    selecionado.Location = casa.Location;
-                    int avance = anterior.Y - casa.Location.Y;
-                }
-                if (true)//turnos extras no caso de poder comer outra peça de seguida
-                {
-                    selecionado.BackColor = Color.Black;
-                    selecionado = null;
-                    movExtra = false;
-                }
-                else
-                {
-                    movExtra = true;
-                }
-            }
-        }
-        //private bool movimentoExtra() funcao para comer mais que uma peca
         
-        */
 
         
                     
@@ -216,6 +267,7 @@ namespace Jogo_das_damas
 
         private void ClickCasa(object sender, MouseEventArgs e)
         {
+            
             f1 = selecionado.Location;
             
             f2 = ((PictureBox)sender).Location;
@@ -228,13 +280,15 @@ namespace Jogo_das_damas
 
             string cor2 = selecionado.Name.ToString().Substring(0, 1);
             char cor = Convert.ToChar(cor2);
-            if (selecionado.Tag == "Dama")
-            {
-                PedidoMoverDama(f1, f2, cor);
-            }
-            PedidoMoverPeca(f1,f2,cor);
+
+            //if (selecionado.Tag == "Dama")
+            //{
+            //    PedidoMoverDama(f1, f2, cor);
+            //}
            
+            PedidoMoverPeca(f1,f2,cor);
             
+
 
         }
         private void ClickBranca(object sender, MouseEventArgs e)
@@ -252,8 +306,6 @@ namespace Jogo_das_damas
             Program.V_Menu.Show();
             this.Hide();
         }
-
-        
 
        
     }
