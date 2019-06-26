@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Jogo_das_damas
 {
@@ -17,26 +15,6 @@ namespace Jogo_das_damas
         public int Vez { get; set; }
         public int Num_Jogada { get; set; }
         public Modo_Jogo Modo { get; set; }
-        public bool movExtra {get; set;}
-
-    
-        public Jogo()
-        {
-            //if (Modo ==1) 
-            //    JogoX1();
-
-            //if (Modo == BOT)
-            //    JogoBot();
-            //if (Modo == Online)
-            //    JogoOnline();
-        }    
-        
-
-        public void JogoX1()
-        {
-
-        }
-
-
+       
     }
 }
